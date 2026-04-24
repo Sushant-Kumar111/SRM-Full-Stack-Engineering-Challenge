@@ -25,8 +25,9 @@ function App() {
       if (!Array.isArray(parsedData)) {
         throw new Error('Input must be a JSON array.');
       }
+      const BASE_URL = import.meta.env.VITE_API_URL;
 
-      const response = await axios.post('http://localhost:3000/bfhl', {
+      const response = await axios.post(`${BASE_URL}/bfhl`, {
         data: parsedData
       });
 
@@ -66,7 +67,7 @@ function App() {
           <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1rem' }}>
             Provide a JSON array of string relationships (e.g., <code>"A-&gt;B"</code>)
           </p>
-          
+
           <div style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem', flexWrap: 'wrap' }}>
             <button className="badge" onClick={loadTestCycle} style={{ cursor: 'pointer' }}>Test Cycle</button>
             <button className="badge" onClick={loadTestDuplicate} style={{ cursor: 'pointer' }}>Test Duplicates</button>
@@ -74,14 +75,14 @@ function App() {
             <button className="badge" onClick={loadTestMultiParent} style={{ cursor: 'pointer' }}>Test Multi-Parent</button>
           </div>
 
-          <textarea 
+          <textarea
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             spellCheck="false"
           />
-          <button 
-            className="primary-btn" 
-            onClick={handleSubmit} 
+          <button
+            className="primary-btn"
+            onClick={handleSubmit}
             disabled={loading || !inputVal.trim()}
           >
             {loading ? (
@@ -100,7 +101,7 @@ function App() {
 
         {result && (
           <div className="fade-in" style={{ animationDelay: '0.2s' }}>
-            
+
             <div className="api-info mb-6">
               <div className="api-info-item">
                 <span>User ID</span>
@@ -132,49 +133,49 @@ function App() {
             </div>
 
             <div className="grid-cols-2 mb-6">
-               <div className="glass-panel">
-                 <div className="section-title">
-                   <h3>Invalid Entries</h3>
-                   <span className="badge danger">{result.invalid_entries.length} items</span>
-                 </div>
-                 <div>
-                   {result.invalid_entries.length === 0 ? (
-                     <span style={{ color: 'var(--text-secondary)' }}>None</span>
-                   ) : (
-                     result.invalid_entries.map((item, idx) => (
-                       <span key={idx} className="badge danger">{item}</span>
-                     ))
-                   )}
-                 </div>
-               </div>
+              <div className="glass-panel">
+                <div className="section-title">
+                  <h3>Invalid Entries</h3>
+                  <span className="badge danger">{result.invalid_entries.length} items</span>
+                </div>
+                <div>
+                  {result.invalid_entries.length === 0 ? (
+                    <span style={{ color: 'var(--text-secondary)' }}>None</span>
+                  ) : (
+                    result.invalid_entries.map((item, idx) => (
+                      <span key={idx} className="badge danger">{item}</span>
+                    ))
+                  )}
+                </div>
+              </div>
 
-               <div className="glass-panel">
-                 <div className="section-title">
-                   <h3>Duplicate Edges</h3>
-                   <span className="badge warning">{result.duplicate_edges.length} items</span>
-                 </div>
-                 <div>
-                   {result.duplicate_edges.length === 0 ? (
-                     <span style={{ color: 'var(--text-secondary)' }}>None</span>
-                   ) : (
-                     result.duplicate_edges.map((item, idx) => (
-                       <span key={idx} className="badge warning">{item}</span>
-                     ))
-                   )}
-                 </div>
-               </div>
+              <div className="glass-panel">
+                <div className="section-title">
+                  <h3>Duplicate Edges</h3>
+                  <span className="badge warning">{result.duplicate_edges.length} items</span>
+                </div>
+                <div>
+                  {result.duplicate_edges.length === 0 ? (
+                    <span style={{ color: 'var(--text-secondary)' }}>None</span>
+                  ) : (
+                    result.duplicate_edges.map((item, idx) => (
+                      <span key={idx} className="badge warning">{item}</span>
+                    ))
+                  )}
+                </div>
+              </div>
             </div>
 
             <div className="glass-panel">
-               <div className="section-title">
-                 <h2>Full API Response</h2>
-                 <button className="copy-btn" onClick={copyToClipboard}>
-                   {copied ? 'Copied!' : 'Copy JSON'}
-                 </button>
-               </div>
-               <div className="json-view">
-                 {JSON.stringify(result, null, 2)}
-               </div>
+              <div className="section-title">
+                <h2>Full API Response</h2>
+                <button className="copy-btn" onClick={copyToClipboard}>
+                  {copied ? 'Copied!' : 'Copy JSON'}
+                </button>
+              </div>
+              <div className="json-view">
+                {JSON.stringify(result, null, 2)}
+              </div>
             </div>
 
           </div>
