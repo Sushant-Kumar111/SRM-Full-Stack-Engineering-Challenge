@@ -15,7 +15,6 @@ function App() {
       setError(null);
       setResult(null);
 
-      // Parse input
       let parsedData;
       try {
         parsedData = JSON.parse(inputVal);

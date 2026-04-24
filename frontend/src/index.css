@@ -52,7 +52,6 @@ h1, h2, h3, h4, h5, h6 {
 .mb-8 { margin-bottom: 2rem; }
 .mt-8 { margin-top: 2rem; }
 
-/* Glassmorphism Classes */
 .glass-panel {
   background: var(--bg-card);
   backdrop-filter: blur(10px);
@@ -79,7 +78,6 @@ h1, h2, h3, h4, h5, h6 {
   100% { transform: rotate(360deg); }
 }
 
-/* Smooth fade in */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
@@ -244,7 +242,6 @@ button.primary-btn:disabled {
   background: var(--accent);
 }
 
-/* API Info style */
 .api-info {
   background: rgba(16, 185, 129, 0.1);
   border: 1px solid rgba(16, 185, 129, 0.2);
@@ -271,7 +268,6 @@ button.primary-btn:disabled {
   color: var(--success);
 }
 
-/* Alert styles */
 .alert {
   padding: 1rem;
   border-radius: 8px;

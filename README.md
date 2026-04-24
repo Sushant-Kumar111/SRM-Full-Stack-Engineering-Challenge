@@ -51,9 +51,9 @@ Developed as part of a **Full Stack Engineering Challenge**, focusing on correct
 
 ## 🔗 Live Links
 
-* 🌐 Frontend: **YOUR_FRONTEND_URL**
-* ⚙️ Backend API: **YOUR_BACKEND_URL**
-* 📂 GitHub Repo: **YOUR_GITHUB_URL**
+* 🌐 Frontend: https://srm-full-stack-engineering-challenge-ewvugz150.vercel.app
+* ⚙️ Backend API: https://srm-full-stack-engineering-challenge-h04f.onrender.com
+* 📂 GitHub Repo: https://github.com/Sushant-Kumar111/SRM-Full-Stack-Engineering-Challenge
 
 ---
 

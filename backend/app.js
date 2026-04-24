@@ -7,10 +7,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Routes
 app.use('/bfhl', bfhlRoutes);
 
-// Health check
 app.get('/', (req, res) => {
     res.send('Hierarchy Processor API is running.');
 });

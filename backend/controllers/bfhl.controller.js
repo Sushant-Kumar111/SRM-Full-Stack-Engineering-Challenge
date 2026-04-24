@@ -38,35 +38,30 @@ const runInternalTests = (req, res) => {
 
     const results = {};
     
-    // 1. Cycle test
     const resCycle = processHierarchies(testCases.cycle);
     results.cycle_test = {
         passed: resCycle.summary.total_cycles === 1 && resCycle.summary.total_trees === 0,
         output: resCycle.hierarchies
     };
 
-    // 2. Duplicate test
     const resDup = processHierarchies(testCases.duplicate);
     results.duplicate_test = {
         passed: resDup.duplicate_edges.length === 1 && resDup.duplicate_edges[0] === "A->B",
         output: resDup.duplicate_edges
     };
 
-    // 3. Invalid test
     const resInv = processHierarchies(testCases.invalid);
     results.invalid_test = {
         passed: resInv.invalid_entries.length === 1 && resInv.invalid_entries[0] === "A->A",
         output: resInv.invalid_entries
     };
 
-    // 4. Multi-parent test
     const resMulti = processHierarchies(testCases.multiParent);
     results.multi_parent_test = {
         passed: resMulti.summary.total_trees === 1 && resMulti.hierarchies.length === 1 && resMulti.hierarchies[0].root === "A",
-        targetAchieved: true // 'B' should be fully ignored along with the edge
+        targetAchieved: true 
     };
 
-    // 5. Depth test
     const resDepth = processHierarchies(testCases.depth);
     results.depth_test = {
         passed: resDepth.summary.largest_tree_root === "A" && resDepth.hierarchies[0].depth === 4,
